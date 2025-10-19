@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    --primary: 217 91% 18%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 35%;
+
+    --secondary: 187 85% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 187 85% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 35%;
+
+    --radius: 0.75rem;
+
+    /* Portfolio-specific tokens */
+    --hero-gradient-start: 217 91% 18%;
+    --hero-gradient-end: 187 85% 35%;
+    --card-hover-shadow: 217 91% 18% / 0.1;
+    --skill-bar-bg: 210 20% 94%;
+    --skill-bar-fill: 187 85% 45%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 25% 8%;
+    --primary-glow: 217 91% 45%;
+
+    --secondary: 187 85% 50%;
+    --secondary-foreground: 220 25% 8%;
+
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 187 85% 50%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 217 91% 60%;
+
+    --hero-gradient-start: 217 91% 25%;
+    --hero-gradient-end: 187 85% 25%;
+    --card-hover-shadow: 217 91% 60% / 0.2;
+    --skill-bar-bg: 220 20% 16%;
+    --skill-bar-fill: 187 85% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--hero-gradient-start)), hsl(var(--hero-gradient-end)));
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  }
+
+  .skill-bar {
+    @apply relative h-3 rounded-full bg-[hsl(var(--skill-bar-bg))] overflow-hidden;
+  }
+
+  .skill-bar-fill {
+    @apply absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-secondary transition-all duration-1000 ease-out;
+  }
+
+  .section-padding {
+    @apply py-20 px-6 md:px-12 lg:px-24;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+}
